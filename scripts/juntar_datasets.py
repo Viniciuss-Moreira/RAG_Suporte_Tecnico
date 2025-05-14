@@ -1,31 +1,38 @@
-import os
 import pandas as pd
+import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CAMINHO_DADOS = os.path.join(BASE_DIR, "../dados/brutos/processados")
-ARQUIVO_SAIDA = os.path.join(BASE_DIR, "../dados/brutos/processados/todos_dados_consolidados.csv")
+caminho_arquivos = '/dados/brutos/processados/'
 
-arquivos = [
-    "IT_tickets_kaggle.csv",
-    "qa_superuser.csv",
-    "salarios_de_tecnologia.csv",
-    "serverfault.csv",
-    "twitterTickets.csv",
+arquivos_csv = [
+    'IT_Tickets_kaggle.csv',
+    'qa_superuser.csv',
+    'salarios_de_tecnologia.csv',
+    'serverfault.csv',
+    'twitterTickets.csv'
 ]
 
 dataframes = []
-for nome_arquivo in arquivos:
-    caminho_completo = os.path.join(CAMINHO_DADOS, nome_arquivo)
-    try:
-        df = pd.read_csv(caminho_completo, encoding="utf-8")
-        dataframes.append(df)
-        print(f"ok {nome_arquivo}")
-    except Exception as e:
-        print(f"erro {nome_arquivo}: {e}")
 
-if dataframes:
-    df_concatenado = pd.concat(dataframes, ignore_index=True)
-    df_concatenado.to_csv(ARQUIVO_SAIDA, index=False, encoding="utf-8")
-    print(f"ok {ARQUIVO_SAIDA}")
-else:
-    print("erro")
+colunas_unicas = set()
+
+for arquivo in arquivos_csv:
+    caminho_arquivo = os.path.join(caminho_arquivos, arquivo)
+    df = pd.read_csv(caminho_arquivo)
+    
+    colunas_unicas.update(df.columns)
+    
+    dataframes.append(df)
+
+for i, df in enumerate(dataframes):
+    for coluna in colunas_unicas:
+        if coluna not in df.columns:
+            df[coluna] = pd.NA
+    
+    dataframes[i] = df[sorted(colunas_unicas)]
+
+df_final = pd.concat(dataframes, ignore_index=True)
+
+output_file = '/dados/brutos/processados/corpus_unificado.csv'
+df_final.to_csv(output_file, index=False)
+
+print(f'Dataset unificado e ajustado foi salvo em: {output_file}')
