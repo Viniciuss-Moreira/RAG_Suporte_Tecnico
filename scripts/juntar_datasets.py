@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-caminho_arquivos = '/dados/brutos/processados/'
+caminho_arquivos = '../dados/brutos/processados/'
 
 arquivos_csv = [
     'IT_Tickets_kaggle.csv',
@@ -32,7 +32,7 @@ for i, df in enumerate(dataframes):
 
 df_final = pd.concat(dataframes, ignore_index=True)
 
-output_file = '/dados/brutos/processados/corpus_unificado.csv'
+output_file = '../dados/brutos/processados/corpus_unificado.csv'
 df_final.to_csv(output_file, index=False)
 
 print(f'Dataset unificado e ajustado foi salvo em: {output_file}')
