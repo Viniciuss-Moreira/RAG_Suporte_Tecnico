@@ -1,28 +1,22 @@
-from tokenizers import ByteLevelBPETokenizer
-from tokenizers.processors import BertProcessing 
+from tokenizers import Tokenizer
+from tokenizers.models import BPE
+from tokenizers.trainers import BpeTrainer
+from transformers import PreTrainedTokenizerFast
 
-corpus_file = "../dados/brutos/processados/corpus.txt"
-tokenizer = ByteLevelBPETokenizer()
+# Criação e treino
+tokenizer = Tokenizer(BPE(unk_token="<unk>"))
+trainer = BpeTrainer(special_tokens=["<pad>", "<s>", "</s>", "<unk>"])
+tokenizer.train(["../dados/brutos/processados/corpus.txt"], trainer)
 
-tokenizer.train(
-    files=[corpus_file],
-    vocab_size=30522,
-    min_frequency=2,
-    show_progress=True,
-    special_tokens=[
-        "<s>",
-        "<pad>",
-        "</s>",
-        "<unk>",
-        "<mask>",
-    ]
+# Salvar vocabulário e merges
+tokenizer.save("tokenizer_treinado/tokenizer.json")
+
+# Converter para Hugging Face e salvar
+hf_tokenizer = PreTrainedTokenizerFast(
+    tokenizer_file="tokenizer_treinado/tokenizer.json",
+    unk_token="<unk>",
+    pad_token="<pad>",
+    bos_token="<s>",
+    eos_token="</s>"
 )
-
-output_dir = "./meu_tokenizer_custom"
-import os
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
-
-tokenizer.save_model(output_dir)
-
-print(f"tokenizer treinado em {output_dir}")
+hf_tokenizer.save_pretrained("tokenizer_treinado")
