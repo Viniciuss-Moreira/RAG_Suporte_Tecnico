@@ -1,0 +1,11 @@
+model_name_or_path: "t5-small"
+dataset_path: "/workspaces/RAG_Suporte_Tecnico/dados/brutos/processados/perguntas_e_respostas/dados/brutos/processados/perguntas_e_respostas/perguntas_respostas.json"
+output_dir: "modelo/treinado"
+max_length: 128
+batch_size: 8
+learning_rate: !!float 5e-5
+num_train_epochs: 3
+val_split: 0.1
+lr_scheduler: "linear"
+warmup_steps: 100
+device: "cpu"
