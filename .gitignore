@@ -173,3 +173,4 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 tokenizer/tokenizer_treinado/dados_tokenizados.json
+modelo/treinado/model.safetensors
