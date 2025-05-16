@@ -1,41 +1,46 @@
 import json
-import torch
 from torch.utils.data import Dataset
 
 class PerguntasRespostasDataset(Dataset):
-    def __init__(self, caminho_arquivo, tokenizer, max_length=512):
-        with open(caminho_arquivo, 'r', encoding='utf-8') as f:
-            self.pares = json.load(f)
-        
+    def __init__(self, caminho_arquivo, tokenizer, max_length=128):
         self.tokenizer = tokenizer
         self.max_length = max_length
 
+        with open(caminho_arquivo, "r", encoding="utf-8") as f:
+            self.dados = json.load(f)
+
     def __len__(self):
-        return len(self.pares)
+        return len(self.dados)
 
     def __getitem__(self, idx):
-        item = self.pares[idx]
-        pergunta = item['pergunta']
-        resposta = item['resposta']
+        item = self.dados[idx]
+        pergunta = item["pergunta"]
+        resposta = item["resposta"]
 
-        encoding = self.tokenizer(
+        inputs = self.tokenizer(
             pergunta,
-            truncation=True,
-            padding='max_length',
             max_length=self.max_length,
-            return_tensors='pt'
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt",
         )
 
-        target_encoding = self.tokenizer(
+        targets = self.tokenizer(
             resposta,
-            truncation=True,
-            padding='max_length',
             max_length=self.max_length,
-            return_tensors='pt'
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt",
         )
+
+        input_ids = inputs["input_ids"].squeeze()
+        attention_mask = inputs["attention_mask"].squeeze()
+        labels = targets["input_ids"].squeeze()
+
+        labels[labels == self.tokenizer.pad_token_id] = -100
 
         return {
-            'input_ids': encoding['input_ids'].squeeze(),
-            'attention_mask': encoding['attention_mask'].squeeze(),
-            'labels': target_encoding['input_ids'].squeeze()
+            "input_ids": input_ids,
+            "attention_mask": attention_mask,
+            "labels": labels,
         }

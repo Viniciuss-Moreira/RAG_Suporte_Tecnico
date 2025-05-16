@@ -11,6 +11,8 @@ def train():
     with open("treinamento/configuracao.yaml") as f:
         config = yaml.safe_load(f)
 
+    print("Configurações:", config)
+
     device = torch.device(config.get("device", "cpu"))
 
     tokenizer = AutoTokenizer.from_pretrained(config["model_name_or_path"])
@@ -47,9 +49,6 @@ def train():
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["labels"].to(device)
 
-            labels = labels.clone()
-            labels[labels == tokenizer.pad_token_id] = -100
-
             outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
             loss = outputs.loss
             loss.backward()
@@ -69,9 +68,6 @@ def train():
                 input_ids = batch["input_ids"].to(device)
                 attention_mask = batch["attention_mask"].to(device)
                 labels = batch["labels"].to(device)
-
-                labels = labels.clone()
-                labels[labels == tokenizer.pad_token_id] = -100
 
                 outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
                 loss = outputs.loss

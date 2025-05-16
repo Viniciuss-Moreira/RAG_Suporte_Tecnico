@@ -1998,5 +1998,129 @@
   {
     "pergunta": "Como resolver o acesso negado no Linux Mint?",
     "resposta": "Verifique se há atualizações disponíveis para o sistema."
+  },
+  {
+    "pergunta": "Meu computador não reconhece o pendrive, o que fazer?",
+    "resposta": "Tente conectar em outra porta USB e verifique se o dispositivo aparece no Gerenciador de Dispositivos ou no comando 'lsusb' no Linux."
+  },
+  {
+    "pergunta": "Como resolver erro de tela azul no Windows 10?",
+    "resposta": "Verifique os drivers de vídeo e memória, atualize-os e execute o verificador de arquivos do sistema com 'sfc /scannow'."
+  },
+  {
+    "pergunta": "O Ubuntu não inicia após atualização, como corrigir?",
+    "resposta": "Tente acessar o modo de recuperação e reinstalar o kernel com 'apt-get install --reinstall linux-image-generic'."
+  },
+  {
+    "pergunta": "O som parou de funcionar no Linux Mint, como arrumar?",
+    "resposta": "Verifique se o mixer está no mudo e reinicie o serviço de som com 'sudo alsa force-reload'."
+  },
+  {
+    "pergunta": "Como aumentar a velocidade do meu PC com Windows 11?",
+    "resposta": "Desative programas de inicialização desnecessários, faça uma limpeza de disco e atualize os drivers."
+  },
+  {
+    "pergunta": "Meu notebook não carrega a bateria, o que pode ser?",
+    "resposta": "Teste com outro carregador, verifique a conexão da bateria e, se possível, cheque a saúde da bateria pelo BIOS."
+  },
+  {
+    "pergunta": "O Steam não abre no Ubuntu, qual a solução?",
+    "resposta": "Reinstale o Steam via terminal e certifique-se de que o driver de vídeo está atualizado."
+  },
+  {
+    "pergunta": "Como corrigir erro de permissões ao instalar programas no Linux?",
+    "resposta": "Use o comando 'sudo' para permissões administrativas ou ajuste as permissões com 'chmod' no arquivo ou pasta."
+  },
+  {
+    "pergunta": "Meu PC está esquentando muito, o que fazer?",
+    "resposta": "Limpe a poeira do ventilador, verifique a pasta térmica e garanta boa circulação de ar no gabinete."
+  },
+  {
+    "pergunta": "Como recuperar arquivos deletados no Windows?",
+    "resposta": "Use programas de recuperação como Recuva ou verifique a Lixeira para restaurar arquivos deletados recentemente."
+  },
+  {
+    "pergunta": "O Wi-Fi não conecta no Linux Mint, como resolver?",
+    "resposta": "Verifique se o driver da placa de rede está instalado e reinicie o serviço de rede com 'sudo systemctl restart NetworkManager'."
+  },
+  {
+    "pergunta": "Meu PC não liga e não dá sinal de energia, o que pode ser?",
+    "resposta": "Cheque o cabo de alimentação, teste outra tomada e verifique se a fonte está funcionando corretamente."
+  },
+  {
+    "pergunta": "Como corrigir erro de tela preta após login no Ubuntu?",
+    "resposta": "Tente redefinir o ambiente gráfico com 'sudo dpkg-reconfigure gdm3' ou reinstale o driver da placa de vídeo."
+  },
+  {
+    "pergunta": "Como aumentar espaço em disco no Windows 10?",
+    "resposta": "Faça uma limpeza de disco, desinstale programas desnecessários e utilize ferramentas como 'Compact OS'."
+  },
+  {
+    "pergunta": "Meu teclado não funciona no Linux Mint, como consertar?",
+    "resposta": "Verifique as conexões físicas, teste outro teclado e reinstale os drivers de teclado se necessário."
+  },
+  {
+    "pergunta": "Como solucionar erro de falta de memória no Windows?",
+    "resposta": "Aumente o arquivo de paginação, feche programas pesados e considere adicionar mais memória RAM física."
+  },
+  {
+    "pergunta": "O computador trava durante jogos, o que pode ser?",
+    "resposta": "Atualize os drivers da placa de vídeo, feche programas em segundo plano e verifique a temperatura do processador."
+  },
+  {
+    "pergunta": "Como configurar uma impressora no Linux Mint?",
+    "resposta": "Use o utilitário de impressão do sistema e adicione a impressora via IP ou conexão USB."
+  },
+  {
+    "pergunta": "Meu Windows 11 não reconhece o monitor externo, o que fazer?",
+    "resposta": "Atualize os drivers da placa gráfica e configure a saída de vídeo nas configurações de exibição."
+  },
+  {
+    "pergunta": "Como restaurar o sistema no Ubuntu?",
+    "resposta": "Use o Timeshift para restaurar a partir de um snapshot criado anteriormente."
+  },
+  {
+    "pergunta": "O Chrome está muito lento, como melhorar?",
+    "resposta": "Limpe o cache e os cookies, desative extensões não usadas e verifique se há atualizações."
+  },
+  {
+    "pergunta": "Como resolver erro 0x80070005 no Windows?",
+    "resposta": "Execute o utilitário de solução de problemas do Windows Update e verifique permissões de acesso."
+  },
+  {
+    "pergunta": "Meu PC está com muitos vírus, como limpar?",
+    "resposta": "Use um antivírus confiável para escanear e remover ameaças, e mantenha o sistema atualizado."
+  },
+  {
+    "pergunta": "Como fazer backup dos meus dados no Linux Mint?",
+    "resposta": "Use ferramentas como 'rsync' ou aplicativos gráficos como 'Deja Dup' para backups regulares."
+  },
+  {
+    "pergunta": "Meu SSD não está sendo reconhecido no Windows, o que fazer?",
+    "resposta": "Verifique no Gerenciador de Dispositivos, atualize o firmware do SSD e confira as conexões SATA/PCIe."
+  },
+  {
+    "pergunta": "Como corrigir erro de driver no Linux?",
+    "resposta": "Instale os drivers proprietários via gerenciador de drivers ou compile manualmente se necessário."
+  },
+  {
+    "pergunta": "Meu mouse está com atraso no Windows, como corrigir?",
+    "resposta": "Verifique a conexão USB, atualize drivers e desative opções de economia de energia."
+  },
+  {
+    "pergunta": "Como atualizar o kernel no Ubuntu?",
+    "resposta": "Use o comando 'sudo apt update && sudo apt upgrade' e, se necessário, instale versões específicas do kernel."
+  },
+  {
+    "pergunta": "Meu PC reinicia sozinho, o que pode ser?",
+    "resposta": "Cheque superaquecimento, problemas na fonte de alimentação ou falhas de hardware."
+  },
+  {
+    "pergunta": "Como liberar espaço no Linux Mint?",
+    "resposta": "Remova arquivos temporários, limpe o cache do apt com 'sudo apt clean' e desinstale programas não usados."
+  },
+  {
+    "pergunta": "O Ubuntu está lento após atualização, como melhorar?",
+    "resposta": "Verifique processos em segundo plano, atualize drivers e considere usar uma interface gráfica mais leve."
   }
 ]
